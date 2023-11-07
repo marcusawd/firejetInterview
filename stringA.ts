@@ -1,53 +1,52 @@
-export const codeString = `
 import { SandpackBundlerFiles } from "@codesandbox/sandpack-client";
 
 import {
-  ARBITRARY_COMPONENT_FOLDER_PATH,
-  FIREJET_SAVE_DATA_PATH,
+	ARBITRARY_COMPONENT_FOLDER_PATH,
+	FIREJET_SAVE_DATA_PATH,
 } from "./SHIM_CONSTANTS";
 
 const saveFile = {
-  pages: {
-    main: {
-      componentData: [
-        {
-          type: "EXISTING_COMPONENT",
-          x: 100,
-          y: 400,
-          width: 300,
-          height: 400,
-          filePath: "/App.jsx",
-          exportName: "default",
-        },
-        {
-          type: "EXISTING_COMPONENT",
-          x: 700,
-          y: 0,
-          width: 500,
-          height: 100,
-          filePath: \`\${ARBITRARY_COMPONENT_FOLDER_PATH}/1/HelloWorld.js\`,
-          exportName: "default",
-        },
-      ],
-    },
-  },
-  version: { major: 0, minor: 0, patch: 0 },
+	pages: {
+		main: {
+			componentData: [
+				{
+					type: "EXISTING_COMPONENT",
+					x: 100,
+					y: 400,
+					width: 300,
+					height: 400,
+					filePath: "/App.jsx",
+					exportName: "default",
+				},
+				{
+					type: "EXISTING_COMPONENT",
+					x: 700,
+					y: 0,
+					width: 500,
+					height: 100,
+					filePath: `${ARBITRARY_COMPONENT_FOLDER_PATH}/1/HelloWorld.js`,
+					exportName: "default",
+				},
+			],
+		},
+	},
+	version: { major: 0, minor: 0, patch: 0 },
 };
 
 //TODO: Make sure all the processors are available here
 const packageJson = {
-  dependencies: {
-    react: "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "^4.0.0",
-  },
-  main: "/index.js",
-  devDependencies: {},
+	dependencies: {
+		react: "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-scripts": "^4.0.0",
+	},
+	main: "/index.js",
+	devDependencies: {},
 };
 
 export const DEFAULT_REACT_LOADING_FILES: SandpackBundlerFiles = {
-  "/App.tsx": {
-    code: /*tsx*/ \`\export default function App() {
+	"/App.tsx": {
+		code: /*tsx*/ `export default function App() {
         return <div style={{width: "100%", height:"90vh", overflow:'none', display:"grid", placeItems:"center"}}><svg
         xmlns="http://www.w3.org/2000/svg"
         width="72px"
@@ -70,14 +69,14 @@ export const DEFAULT_REACT_LOADING_FILES: SandpackBundlerFiles = {
           />
         </path>
     </svg></div>
-    }\`,
-  },
+    }`,
+	},
 };
 
 //TODO: Figure out why tailwind is so obsessed with compiling bg-[xyz] causing our compile to fail when the file is not there
 export const DEFAULT_REACT_FILES: SandpackBundlerFiles = {
-  "/App.jsx": {
-    code: /*tsx*/ \`\
+	"/App.jsx": {
+		code: /*tsx*/ `
     import "./styles.css"
 
     export default function App() {
@@ -92,14 +91,14 @@ export const DEFAULT_REACT_FILES: SandpackBundlerFiles = {
           </div>  
         )
       }
-      \`,
-  },
-  [FIREJET_SAVE_DATA_PATH]: {
-    //TODO: When filenames are the same it may throw errors
-    code: JSON.stringify(saveFile),
-  },
-  [\`\${ARBITRARY_COMPONENT_FOLDER_PATH}/1/HelloWorld.js\`]: {
-    code: /*tsx*/ \`\export default function HelloWorld() {return <p>
+      `,
+	},
+	[FIREJET_SAVE_DATA_PATH]: {
+		//TODO: When filenames are the same it may throw errors
+		code: JSON.stringify(saveFile),
+	},
+	[`${ARBITRARY_COMPONENT_FOLDER_PATH}/1/HelloWorld.js`]: {
+		code: /*tsx*/ `export default function HelloWorld() {return <p>
       Test Test 123
       <br />
       Test 2 1245
@@ -113,10 +112,10 @@ export const DEFAULT_REACT_FILES: SandpackBundlerFiles = {
         <b style={{ textDecorationLine: "underline"}}>Hee </b>
         <i>ha ha</i>
         </div>
-    </p>}\`,
-  },
-  "/tailwind.config.js": {
-    code: \`\/** @type {import('tailwindcss').Config} */
+    </p>}`,
+	},
+	"/tailwind.config.js": {
+		code: `/** @type {import('tailwindcss').Config} */
     module.exports = {
       content: ["./**/*.{js,jsx,ts,tsx}"],
       theme: {
@@ -124,12 +123,12 @@ export const DEFAULT_REACT_FILES: SandpackBundlerFiles = {
       },
       plugins: [],
     };
-    \`,
-  },
-  //TODO: For font styles only import whatever is used in the project
-  //TODO: For fonts not available on google fonts, throw error and ask user to provide font
-  "/styles.css": {
-    code: \`\
+    `,
+	},
+	//TODO: For font styles only import whatever is used in the project
+	//TODO: For fonts not available on google fonts, throw error and ask user to provide font
+	"/styles.css": {
+		code: `
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
     @tailwind base;
@@ -152,10 +151,10 @@ export const DEFAULT_REACT_FILES: SandpackBundlerFiles = {
 
 h1 {
   font-size: 1.5rem;
-}\`,
-  },
-  "/public/index.html": {
-    code: \`\<!DOCTYPE html>
+}`,
+	},
+	"/public/index.html": {
+		code: `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -165,12 +164,11 @@ h1 {
   <body>
     <div id="root"></div>
   </body>
-</html>\`,
-  },
-  "/package.json": {
-    code: JSON.stringify(packageJson),
-  },
+</html>`,
+	},
+	"/package.json": {
+		code: JSON.stringify(packageJson),
+	},
 };
 
 //TODO: Inject dependencies for packagejson better and DO NOT clash with user dependencies
-`;
