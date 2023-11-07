@@ -69,7 +69,13 @@ When converting a design with the [FireJet Figma Plugin](https://www.firejet.io/
 When using build tools like vite or tailwind, sometimes we encounter the error `fs is undefined`
 
 1. Name some cases where fs is defined and some cases where it is undefined
+
+- fs is a built in module by node.js, so it will be defined in non-browser environments.
+- when running javascript in browsers, fs will not be defined
+
 2. In the case that fs is undefined, suggest how we can make fs defined, so that we can continue using build tools like vite and tailwind
+
+- You can use a library like JSDom to enable fs in browser environments
 
 ## Question 7: For loop not working
 
