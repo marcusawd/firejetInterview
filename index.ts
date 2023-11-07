@@ -46,7 +46,7 @@ function extract(node: Node, code: string) {
 async function lint(code: string): Promise<string> {
 	return new Promise((resolve) => {
 		setTimeout(() => {
-			const formattedCode = prettier.format(code);
+			const formattedCode = prettier.format(code, { parser: "babel" });
 			resolve(formattedCode);
 		}, Math.random() * 1000);
 	});
