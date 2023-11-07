@@ -42,7 +42,13 @@ Answer: The error is not caused by running the javascript code, it is being thro
 Trying to call the APIs at [https://api.github.com](https://api.github.com/) from the [FireJet Tweak](https://www.firejet.io/tweak) frontend throws an error.
 
 1. Suggest the type of error and their reason
+
+- You need credentials to call github APIs from JS.
+
 2. Suggest a way to overcome the error, with some javascript snippets to support your answer
+
+- Query for the credentials from the frontend (or just give the frontend the credentials, less secure)
+- Put credentials in .env and then try calling the github APIs again.
 
 ## Question 4: Get styles from element in iFrame
 
@@ -62,7 +68,12 @@ When trying the above code to get the styles from an element inside of the [Fire
 When converting a design with the [FireJet Figma Plugin](https://www.firejet.io/plugin), sometimes when the image is updated in our database, when visiting the website, the image still remains unupdated when viewing on codesandbox
 
 1. Suggest why the image has not been updated
+
+- There might be a cache that is holding onto the old image.
+
 2. Suggest how we could get the image to be updated when viewed in codesandbox
+
+- Clear the cache and the new image should show up.
 
 ## Question 6: `fs is undefined`
 
